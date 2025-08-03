@@ -1,5 +1,6 @@
 package com.learn.controller;
 
+import com.learn.dto.PostWithUserDto;
 import com.learn.entity.Post;
 import com.learn.service.PostService;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 public class PostController {
 
     private final PostService postService;
@@ -38,5 +39,9 @@ public class PostController {
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.deletePost(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/{id}/with-user")
+    public PostWithUserDto getPostWithUser(@PathVariable("id") Long id) {
+        return postService.getPostWithUser(id);
     }
 }

@@ -14,6 +14,14 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello Swagger!";
+    }
+    @GetMapping("/health")
+    public String health() {
+        return "User Service is running";
+    }
 
     @PostMapping
     public User createUser(@RequestBody User user) {
